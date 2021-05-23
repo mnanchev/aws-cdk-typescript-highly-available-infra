@@ -1,13 +1,22 @@
-import { expect as expectCDK, matchTemplate, MatchStyle } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
-import * as SimpleInfra from '../lib/simple_infra-stack';
+import {
+  expect as expectCDK,
+  matchTemplate,
+  MatchStyle,
+} from "@aws-cdk/assert";
+import * as cdk from "@aws-cdk/core";
+import * as SimpleInfra from "../lib/simple_infra-stack";
 
-test('Empty Stack', () => {
-    const app = new cdk.App();
-    // WHEN
-    const stack = new SimpleInfra.SimpleInfraStack(app, 'MyTestStack');
-    // THEN
-    expectCDK(stack).to(matchTemplate({
-      "Resources": {}
-    }, MatchStyle.EXACT))
+test("Empty Stack", () => {
+  const app = new cdk.App();
+  // WHEN
+  const stack = new SimpleInfra.SimpleInfraStack(app, "MyTestStack");
+  // THEN
+  expectCDK(stack).to(
+    matchTemplate(
+      {
+        Resources: {},
+      },
+      MatchStyle.EXACT
+    )
+  );
 });

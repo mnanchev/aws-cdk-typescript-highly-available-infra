@@ -7,6 +7,28 @@
     "@aws-cdk/aws-ecr-assets:dockerIgnoreSupport": true,
     "@aws-cdk/aws-secretsmanager:parseOwnedSecretName": true,
     "@aws-cdk/aws-kms:defaultKeyPolicies": true,
-    "@aws-cdk/aws-s3:grantWriteWithoutAcl": true
+    "@aws-cdk/aws-s3:grantWriteWithoutAcl": true,
+    "dev": {
+      "region": "eu-central-1",
+      "prefix": "auris-object-tracking-euc1-dev-",
+      "network": {
+        "cidr": "10.0.0.0/16",
+        "load_balancer": {
+          "internet_facing": true,
+          "port": 80
+        }
+      },
+      "compute": {
+        "instanceType": "t2.micro",
+        "image": "ami-043097594a7df80ec",
+        "minCapacity": 1,
+        "maxCapacity": 1
+      },
+      "storage": {
+        "database": {
+          "instanceType": "t2.micro"
+        }
+      }
+    }
   }
 }
