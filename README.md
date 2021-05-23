@@ -7,9 +7,11 @@ shared filesystem through EFS
 The `cdk.json` file tells the CDK Toolkit how to execute your app and has the environment
 settings [Currently only dev].
 
-## Useful commands
+## Architecture
+
 ![Infrastructural design](diagram.png)
 
+## Useful commands
  * `npm run build`   compile typescript to js
  * `npm run watch`   watch for changes and compile
  * `npm run test`    perform the jest unit tests
