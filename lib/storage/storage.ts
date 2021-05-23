@@ -35,7 +35,7 @@ export class StorageStack extends Stack {
     // =========================================
     const cluster = new DatabaseCluster(
       this,
-      `${props.prefix}-aurora-cluster-`,
+      `${props.prefix}-aurora-cluster`,
       {
         engine: DatabaseClusterEngine.auroraMysql({
           version: AuroraMysqlEngineVersion.VER_2_08_1,

@@ -25,23 +25,23 @@ export class NetworkStack extends cdk.Stack implements InterStackCommunication {
     //  subnetConfigurations for private, public and isolated subnets
     //
     // =========================================
-    this.vpc = new Vpc(this, `${props.prefix}-vpc-`, {
+    this.vpc = new Vpc(this, `${props.prefix}-vpc`, {
       cidr: props.network.cidr,
       maxAzs: 2,
       subnetConfiguration: [
         {
           subnetType: SubnetType.PUBLIC,
-          name: `${props.network.cidr}-Public-`,
+          name: `${props.network.cidr}-Public`,
           cidrMask: 24,
         },
         {
           cidrMask: 24,
-          name: `${props.prefix}-Private-`,
+          name: `${props.prefix}-Private`,
           subnetType: SubnetType.PRIVATE,
         },
         {
           cidrMask: 28,
-          name: `${props.prefix}-Isolated-`,
+          name: `${props.prefix}-Isolated`,
           subnetType: SubnetType.ISOLATED,
         },
       ],
@@ -52,7 +52,7 @@ export class NetworkStack extends cdk.Stack implements InterStackCommunication {
     //  Application Load Balancer
     //
     // =========================================
-    this.alb = new ApplicationLoadBalancer(this, `${props.prefix}-alb-`, {
+    this.alb = new ApplicationLoadBalancer(this, `${props.prefix}-alb`, {
       vpc: this.vpc,
       internetFacing: props.network.load_balancer.internet_facing,
     });

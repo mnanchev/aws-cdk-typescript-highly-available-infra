@@ -35,7 +35,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     //  Autoscaling instance profile
     //
     // =========================================
-    const role = new Role(this, `${props.prefix}-ec2-role-`, {
+    const role = new Role(this, `${props.prefix}-ec2-role`, {
       assumedBy: new ServicePrincipal("ec2.amazonaws.com"),
     });
     role.addManagedPolicy(
@@ -50,7 +50,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     //  Autoscaling
     //
     // =========================================
-    this.autoscaling = new AutoScalingGroup(this, `${props.prefix}-asg-`, {
+    this.autoscaling = new AutoScalingGroup(this, `${props.prefix}-asg`, {
       instanceType: InstanceType.of(
         Object.values(InstanceClass).filter(
           (value) => value === instanceFamily
@@ -75,7 +75,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     //  Listener
     //
     // =========================================
-    const listener = network.alb.addListener(`${props.region}-alb-listener-`, {
+    const listener = network.alb.addListener(`${props.region}-alb-listener`, {
       port: 80,
     });
     // =========================================
@@ -83,7 +83,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     //  Target
     //
     // =========================================
-    listener.addTargets(`${props.prefix}-targets-`, {
+    listener.addTargets(`${props.prefix}-targets`, {
       port: 80,
       targets: [this.autoscaling],
     });

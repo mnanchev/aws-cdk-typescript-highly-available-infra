@@ -1,4 +1,4 @@
-# Welcome to my first Cloud Development Kit project with CDK!
+# Welcome to my first Cloud Development Kit app with CDK in TypeScript!
 
 This is a simple application to deploy instances in autoscaling group
 behind a Load Balancer, which have access to Aurora MySQL database and a 
