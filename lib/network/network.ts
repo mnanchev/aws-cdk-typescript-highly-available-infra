@@ -5,8 +5,6 @@ import { RemovalPolicy } from "@aws-cdk/core";
 import { CommonProps } from "../common/common_props";
 
 export interface InterStackCommunication {
-  readonly vpc: IVpc;
-  readonly alb: ApplicationLoadBalancer;
 }
 
 export class NetworkStack extends cdk.Stack implements InterStackCommunication {

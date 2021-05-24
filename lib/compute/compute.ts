@@ -65,7 +65,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
       }),
       minCapacity: props.compute.minCapacity,
       maxCapacity: props.compute.maxCapacity,
-      vpc: network.vpc,
+      vpc: this.vpc,
       role: role,
       vpcSubnets: {
         subnetType: SubnetType.PRIVATE,
@@ -77,7 +77,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     //  Listener
     //
     // =========================================
-    const listener = network.alb.addListener(`${props.region}-alb-listener`, {
+    const listener = this.alb.addListener(`${props.region}-alb-listener`, {
       port: 80,
     });
     // =========================================
