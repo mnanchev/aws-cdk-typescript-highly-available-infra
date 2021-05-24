@@ -4,6 +4,7 @@ import {
   InstanceSize,
   InstanceType,
   IVpc,
+  Port,
   SubnetType,
 } from "@aws-cdk/aws-ec2";
 import { LifecyclePolicy, PerformanceMode, FileSystem } from "@aws-cdk/aws-efs";
