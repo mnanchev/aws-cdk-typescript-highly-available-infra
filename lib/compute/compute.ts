@@ -24,10 +24,10 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
   readonly alb: ApplicationLoadBalancer;
 
   constructor(
-      scope: Construct,
-      id: string,
-      props: CommonProps,
-      network: { vpc: IVpc; alb: ApplicationLoadBalancer }
+    scope: Construct,
+    id: string,
+    props: CommonProps,
+    network: { vpc: IVpc; alb: ApplicationLoadBalancer }
   ) {
     super(scope, id, props);
     this.vpc = network.vpc;
@@ -41,7 +41,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
       assumedBy: new ServicePrincipal("ec2.amazonaws.com"),
     });
     role.addManagedPolicy(
-        ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore")
+      ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore")
     );
     let region = props.region;
     let image = props.compute.image;
@@ -54,10 +54,10 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
     // =========================================
     this.autoscaling = new AutoScalingGroup(this, `${props.prefix}-asg`, {
       instanceType: InstanceType.of(
-          Object.values(InstanceClass).filter(
-              (value) => value === instanceFamily
-          )[0],
-          Object.values(InstanceSize).filter((value) => value === instanceSize)[0]
+        Object.values(InstanceClass).filter(
+          (value) => value === instanceFamily
+        )[0],
+        Object.values(InstanceSize).filter((value) => value === instanceSize)[0]
       ),
       groupMetrics: [GroupMetrics.all()],
       machineImage: MachineImage.genericLinux({
@@ -90,7 +90,7 @@ export class ComputeStack extends Stack implements EC2InterStackCommunication {
       targets: [this.autoscaling],
     });
     listener.connections.allowDefaultPortFromAnyIpv4(
-        "Open access from internet"
+      "Open access from internet"
     );
   }
 }
