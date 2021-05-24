@@ -7,7 +7,7 @@ shared filesystem through EFS
 The `cdk.json` file tells the CDK Toolkit how to execute your app and has the environment
 settings [Currently only dev].
 
-## Architecture
+## Stack architecture
 
 ![Infrastructural design](diagram.png)
 
